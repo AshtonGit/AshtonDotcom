@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-image: url("./assets/cool-background.png");
+    background-color: goldenrod;
+    background-size: cover;
+    margin: 0 0;
+}

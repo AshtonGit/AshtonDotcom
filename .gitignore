@@ -7,6 +7,8 @@
 # Only exists if Bazel was run
 /bazel-out
 
+#web design files
+/draft
 
 # dependencies
 /node_modules

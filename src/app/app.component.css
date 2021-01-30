@@ -1,0 +1,33 @@
+
+#name-title{
+    font-size: 70px;
+    font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+}
+
+div.nav-item{
+    color: #111111;    
+    }
+
+nav{
+    display: flex;
+    flex: flex-grow;
+    justify-content: flex-end;
+    background-color: indianred;
+    width: 100%;
+    margin: 0 0;
+    min-height: 40px;
+}
+
+button.nav-item{
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: regular;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    color: #EFEFEF;
+    background-color: #303030;    
+    outline-color: #303030;    
+}
+
