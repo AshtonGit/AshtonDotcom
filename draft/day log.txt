@@ -1,0 +1,22 @@
+
+make 3 css gradients, save their css
+
+pixel ash
+- facing forward  		DONE
+- jump and suprised animation
+- walk animation
+- wave animation
+
+
+heapify
+reverse singly + doubly linked list
+get last element of singly linked list
+get parent of last element of singly linked list
+
+java, python collection practice.
+
+purple->red->yellow->blue gradient
+
+
+
+vfd822

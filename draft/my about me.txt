@@ -1,0 +1,25 @@
+Create a website guide to compost. 
+
+
+I want my site to have...
+- animations, interactivity, easter eggs. 
+
+
+
+Today - 
+BST traversal, iterative and recursive
+Lambda in java
+
+Collect websites (SE)
+Sort Websites into like and dislikes (Fi)
+Note features of each sites (Si)
+Sort sites into categories from Si (Ne)
+List patterns for your site (Ni)
+List features for your site to acheive pattern (Ti)
+Create a mockup of your site in adobe xd
+Send mockup to others for feedback (Te)	
+
+
+Full stack programmer, conservationist, wannabe pixel artist.
+In my spare time you'll find mucking around in the garden, strumming a guitar or walking in the forest.
+I'm happiest with my head in the clouds and my hands in the dirt.
