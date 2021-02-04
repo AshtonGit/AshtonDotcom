@@ -1,0 +1,31 @@
+.splash{
+    display: grid;
+    width: 100%;
+    height: 100vh; /* make splash the height fill the browser window */
+    grid-template-rows: 25% 50% 25%;
+    align-items: start;
+    justify-items: center;
+}
+
+.title{
+    grid-row: 2 / span 1;
+    justify-items: center;
+    align-items: center;
+}
+
+.title h1{
+    font-family: "Righteous", "Abril Fatface", sans-serif; /* Righteous evokes atari, matching with pixel art aesthetic*/
+    font-size: 10vh;
+    line-height: 100%;
+    color: #EEEEEE;
+}
+
+.title h2{
+    font-family: "Roboto", sans-serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 3vh;
+    margin: 0 auto;
+    text-align: center;    
+}
+

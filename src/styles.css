@@ -1,7 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-    background-image: url("./assets/cool-background.png");
-    background-color: goldenrod;
+
+
+.gradient-blue{
+    background: linear-gradient(180deg, #1080F0  20% , 50%,  #033E98);
     background-size: cover;
-    margin: 0 0;
+}
+
+
+.gradient-dark{
+    background: linear-gradient(180deg,  #033E98 30% , 75%,  #1080F0);
+    background-size: cover;
+}
+
+
+.gradient-clothoid{
+    background: linear-gradient();
+}
+
+.tall-body{
+    min-height: 300vh;
+    overflow: scroll;
+}
+
+h1{
+    font-family: "Roboto", sans-serif;
+    font-size: 4vh;
+    text-align: center;
+    color: #EEEEEE;
+}
+
+
+.chapter{
+    height: 80vh;
 }
