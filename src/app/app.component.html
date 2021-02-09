@@ -1,16 +1,18 @@
 <div class = "body-div">
     <nav>
-        <button class = "nav-item" href="#top">Home</button>
-        <button class = "nav-item" href="#about">About</button>       
-        <button class = "nav-item" href="#projects">Projects</button>
-        <button class = "nav-item" href="#resume">Resume</button>
-    </nav>
-
+        <ul class = "nav-list">
+            <li><a href="#top">Home</a></li>
+            <li><a href="#about-me">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href = "../assets/ashton-antoun-cv.pdf" download>Resume</a></li>
+            <li><a href="#contact-me">Contact</a></li>
+          </ul>
+      </nav>
     <app-splash></app-splash>
 
     <div>
-        <div class = "chapter" id="#about"><h1>About Me</h1></div>
-        <div class = "chapter" id="#projects"><h1>Projects</h1></div>
-        <div class = "chapter" id="#resume"><h1>Resume</h1></div>
+        <app-about-me></app-about-me>
+        <div class = "chapter" id="#projects"><h1>Projects</h1></div>        
+        <app-contact-me></app-contact-me>
     </div>
 </div>

@@ -1,0 +1,22 @@
+#content-box{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4vh;
+
+}
+
+.portrait{
+    width: 18vw;
+    height: auto;
+}
+
+#blurb{
+    width: 25vw;
+    min-height: 30vh;
+    text-align: start;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    margin-left: 5vw;
+}

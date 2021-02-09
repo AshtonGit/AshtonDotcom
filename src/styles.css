@@ -13,13 +13,10 @@
 }
 
 
-.gradient-clothoid{
-    background: linear-gradient();
-}
-
 .tall-body{
     min-height: 300vh;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 h1{
@@ -31,5 +28,6 @@ h1{
 
 
 .chapter{
-    height: 80vh;
+    height: 100vh;
+    overflow-y: hidden;
 }
