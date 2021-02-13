@@ -1,22 +1,112 @@
 #content-box{
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 4vh;
-
 }
 
 .portrait{
-    width: 18vw;
+    width: 20vw;
     height: auto;
+    margin: 0 auto;
+    display: block;
 }
 
+
+
 #blurb{
-    width: 25vw;
+    width: 28vw;
     min-height: 30vh;
     text-align: start;
     color: white;
-    font-family: "Roboto", sans-serif;
-    margin-left: 5vw;
+    font-size: x-large;
+    margin: 0vh auto;
+    margin-bottom: 5vh;
 }
+
+#qualifications{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 30vw;
+    margin: 0 auto;
+}
+
+#skills{
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    margin-bottom: 5vh;
+}
+
+#email{
+    font-family: "Roboto", Arial, sans-serif;
+    color: #1c2a43;
+}
+
+#education p{
+    color: #05182a;
+}
+
+p{
+    font-family: Arial, sans-serif;
+    color: #FFECDB;
+}
+
+h1{
+    font-family: "Righteous", sans-serif;
+    color: #FFECDB;
+    border-bottom: #FFECDB, solid 2px;
+    padding-bottom: 2vh;
+}
+
+li{
+    display: flex;
+    font-family: "Arial", sans-serif;
+    font-size: x-large;
+    color: #05182a;
+    align-items: center;
+}
+
+ul{
+    display: inline-block;
+}
+
+li:hover{
+    color: gold;
+    min-width: 1vh;
+    min-height: 1vh;
+}
+
+/*When hover over list items, play animation for that items list style*/
+li:hover .star-style-image{
+    animation-name: star-spin;
+    animation-duration: 1.5s;    
+    animation-iteration-count: infinite;
+}
+
+.star-style-image{
+    background-image: url("../../assets/star-animation/star-front.svg");
+    width: 2vh;
+    height: 2vh;
+    margin-right: 1vh;
+}
+
+/*12 frames at 8 fps
+  1.5 seconds
+*/
+@keyframes star-spin{
+    0%{
+        background-image: url("../../assets/star-animation/star-front.svg");
+    }
+    25%{
+        background-image: url("../../assets/star-animation/star-side.svg");
+    }
+    50%{
+        background-image: url("../../assets/star-animation/star-back.svg");
+    }
+    75%{
+        background-image: url("../../assets/star-animation/star-side.svg");
+    }
+    100%{
+        background-image: url("../../assets/star-animation/star-front.svg");
+    }
+}
+

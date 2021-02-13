@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SplashComponent } from './splash/splash.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { ContactMeComponent } from './contact-me/contact-me.component';
+import { CloudAnimatedBgComponent } from './cloud-animated-bg/cloud-animated-bg.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { ContactMeComponent } from './contact-me/contact-me.component';
     SplashComponent,
     AboutMeComponent,
     ContactMeComponent,
+    CloudAnimatedBgComponent,
   ],
   imports: [
     BrowserModule,

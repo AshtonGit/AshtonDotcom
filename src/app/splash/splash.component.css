@@ -3,35 +3,69 @@
     width: 100%;
     height: 100vh; /* make splash the height fill the browser window */
     grid-template-rows: 25% 50% 25%;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 55% 45%;
     align-items: baseline;
     justify-items: center;
 }
 
-.title{
+.cloud-a{
+    background-image: url("../../assets/pixel-ash-animation/cloud-a.svg");
+    position: fixed;
+    right: 20vw;
+    top: 45vh;
+    z-index: 0;
+    min-width: 10vw;
+}
+
+.cloud-b{
+    background-image: url("../../assets/pixel-ash-animation/cloud-b.svg");
+    z-index: 50;    
+    min-width: 10vw;
+    height: 100px;
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+    left: 100px;
+    top: 100px;
+}
+
+.cloud-c{
+    background-image: url("../../assets/pixel-ash-animation/cloud-c.svg");
+    position: fixed;
+    left: 35vw;
+    bottom: 40vh;
+    z-index: 0;    
+    min-width: 10vw;
+}
+
+#title{
     grid-row: 2 / span 1;
     grid-column: 1 / 2;
     justify-items: center;
     align-items: center;
     justify-self: flex-end;
     z-index: 2;
+    animation-name: title-hidden, title-drop;
+    animation-duration: 1.79s, 0.4s;
+    animation-delay: 0s, 1.79s;
+    position: relative;
 }
 
-.title h1{
+#title h1{
     font-family: "Righteous", "Abril Fatface", sans-serif; /* Righteous evokes atari, matching with pixel art aesthetic*/
     font-size: 10vh;
     line-height: 100%;
     color: #EEEEEE;
 }
 
-
-.title h2{
+#title h2{
     font-family: "Roboto", sans-serif;
     font-style: italic;
     font-weight: 300;
     font-size: 3vh;
     margin: 0 auto;
     text-align: center;    
+    animation-name: delayed-fade-in;
+    animation-duration: 5s;
 }
 
 #greet-animation-container{
@@ -42,37 +76,297 @@
     align-self: center;
 }
 
-
-
 #pixel-ash{
     align-self: center;
-    bottom: 3.5vh;
-    animation-duration:0.69s;
-    animation-name: pixel-ash-walk;
-    animation-iteration-count: infinite;
-    position: relative; /*pixels position is tied to its container*/
+    bottom: 4.3vh; /*line up bottom of pixel sprite with bottom of title text*/
+    animation-duration: 0.69s, 0.5s, 0.7s, 0.21s, 0.5s, 0.4s, 0.4s, 0.4s;
+    animation-delay: 0.1s, 0.79s, 1.29s, 1.99s, 2.2s,  2.7s, 3s, 3.3s;
+    animation-name: pixel-ash-walk-left, pixel-ash-turn, pixel-ash-wave, pixel-ash-turn, pixel-ash-jump,
+     pixel-ash-bounce-high, pixel-ash-bounce-low, pixel-ash-turn;
+    position: relative; 
     width: 20vh;
     height: 20vh;
     background-image: url("../../assets/pixel-ash-animation/pixel-ash-left.svg");
-    transform: scaleX(-1);
     z-index: -1;
+    left: 0px;
 }
 
-@keyframes pixel-ash-walk{
+@keyframes pixel-ash-bounce-low{
+    0%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-jump.svg");
+    }
+    9%{
+        bottom: 12.5px;
+    }
+    18%{
+        bottom: 22.5px;
+    }
+    27%{
+        bottom: 30px;
+    }
+    36%{
+        bottom: 35px;
+    }
+    45%{
+        bottom: 37.5px;
+    }
+    54%{
+        bottom: 37.5px;
+    }
+    63%{
+        bottom: 35px;
+    }
+    72%{
+        bottom: 30px;
+    }
+    81%{
+        bottom: 22.5px;
+    }
+    90%{
+        bottom: 12.5px;
+    }
+    99%{
+        bottom: 0px;
+        background-image: url("../../assets//pixel-ash-animation/pixel-ash-jump.svg");
+    }
+    100%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-front.svg");
+    }
+}
+
+@keyframes pixel-ash-bounce-high{
+    0%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-jump.svg");
+    }
+    9%{
+        bottom: 25px; /*apex of jump*/
+    }
+    18%{
+        bottom: 45px;
+    }
+    27%{
+        bottom: 60px;
+    }
+    36%{
+        bottom: 70px
+    }
+    45%{
+        bottom: 75px;
+    }
+    54%{
+        bottom: 75px;
+    }
+    63%{
+        bottom: 70px;
+    }
+    72%{
+        bottom: 60px;
+    }
+    81%{
+        bottom: 45px;
+    }
+    90%{
+        bottom: 25px;
+    }
+    99%{
+        bottom: 0px;
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-jump.svg");
+    }
+    100%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-left.svg");
+    }
+}
+
+
+@keyframes pixel-ash-wave{
+    0%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-front.svg");
+    }
+    2%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-wave-1.svg");
+    }
+    25%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-wave-2.svg");
+    }
+    50%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-wave-1.svg");
+    }
+    75%{ 
+          background-image: url("../../assets/pixel-ash-animation/pixel-ash-wave-2.svg");
+    }
+    100%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-front.svg");
+    }
+}
+
+@keyframes title-drop{
+    0%{
+        bottom: 50vh;
+    }
+    25%{
+        bottom: 45vh;
+    }
+    50%{
+        bottom: 35vh;
+    }
+    75%{
+        bottom: 20vh;
+    }
+    100%{
+        bottom: 0vh;
+    }
+}
+
+@keyframes title-hidden{
+    0%{
+        bottom: 50vh;
+    }
+
+    100%{
+        bottom: 50vh;
+    }
+}
+
+@keyframes delayed-fade-in{
+    0%{
+        opacity: 0%;
+    }
+    80%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+
+}
+
+@keyframes pixel-ash-walk-left{
     0%{
         background-image: url("../../assets/pixel-ash-animation/pixel-ash-left.svg");
-        transform: scaleX(-1); /*flip image to face the right*/
+        left: 140px;        
+    }
+    12.5%{
+        background-image: url("../../assets/pixel-ash-animation/run-1.svg");
+        left: 120px;
+    }
+    25%{
+        background-image: url("../../assets/pixel-ash-animation/run-2.svg");
+        left: 100px;
+    }
+    37.5%{
+        background-image: url("../../assets/pixel-ash-animation/run-3.svg");
+        left: 80px;
+    }
+    50%{
+        background-image: url("../../assets/pixel-ash-animation/run-1.svg");
+        left: 60px;
+    }
+    62.5%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-left.svg");
+        left: 40px;
+    }
+    75%{
+        background-image: url("../../assets/pixel-ash-animation/run-b1.svg");
+        left: 20px;
+    }
+    87.5%{
+        background-image: url("../../assets/pixel-ash-animation/run-b2.svg");
         left: 0px;
+    }
+    100%{
+        background-image: url("../../assets/pixel-ash-animation//pixel-ash-front.svg");
+    }
+}
+
+
+
+
+
+@keyframes pixel-ash-turn{
+    0%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-front.svg");    
+    }
+    100%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-front.svg");  
+    }
+}
+
+
+@keyframes pixel-ash-jump{
+    /*decelerate on ascent, accelerate on descent*/
+    0%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-jump.svg");
+
+    }
+    9%{
+        bottom: 50px; /*apex of jump*/
+    }
+    18%{
+        bottom: 90px;
+    }
+    27%{
+        bottom: 120px;
+    }
+    36%{
+        bottom: 140px
+    }
+    45%{
+        bottom: 150px;
+    }
+    54%{
+        bottom: 150px;
+    }
+    63%{
+        bottom: 140px;
+    }
+    72%{
+        bottom: 120px;
+    }
+    81%{
+        bottom: 90px;
+    }
+    90%{
+        bottom: 50px;
+    }
+    99%{
+        bottom: 0px;
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-jump.svg");
+    }
+    100%{
+        bottom: 0px;
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-left.svg");        
+
+    }
+}
+
+
+
+@keyframes pixel-ash-greet{
+    0%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-left.svg");
+        right: 200px;
+    }
+    100%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-left.svg");
+        right: 0px;
+    }
+}
+
+
+@keyframes pixel-ash-walk-right{
+    0%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-right.svg");
+        left: 0px;        
     }
     12.5%{
         background-image: url("../../assets/pixel-ash-animation/run-1.svg");
         left: 20px;
-        transform: scaleX(-1);
+        transform: scaleX(-1);  /*flip run frames to face the right*/
     }
     25%{
         background-image: url("../../assets/pixel-ash-animation/run-2.svg");
         left: 40px;
-        transform: scaleX(-1);
+        transform: scaleX(-1); 
     }
     37.5%{
         background-image: url("../../assets/pixel-ash-animation/run-3.svg");
@@ -100,14 +394,8 @@
         left: 140px;
         transform: scaleX(-1);
     }
+    100%{
+        background-image: url("../../assets/pixel-ash-animation/pixel-ash-front.svg");
+        left: 140px;
+    }
 }
-
-@keyframes pixel-ash-jump{
-
-}
-
-@keyframes pixel-ash-turn{
-    
-}
-
-
