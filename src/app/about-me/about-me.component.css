@@ -5,8 +5,9 @@
 .portrait{
     width: 20vw;
     height: auto;
-    margin: 0 auto;
+    margin: 10vh auto;
     display: block;
+    
 }
 
 
@@ -43,6 +44,8 @@
 
 #education p{
     color: #05182a;
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: larger;
 }
 
 p{
@@ -53,8 +56,6 @@ p{
 h1{
     font-family: "Righteous", sans-serif;
     color: #FFECDB;
-    border-bottom: #FFECDB, solid 2px;
-    padding-bottom: 2vh;
 }
 
 li{
