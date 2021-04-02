@@ -65,6 +65,7 @@ app-splash{
     z-index: 1;
     grid-row: 1 / span 1;
     grid-column: 1 / span 1;
+    margin-left:-8px;
 }
 
 app-about-me{

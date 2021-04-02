@@ -11,11 +11,15 @@
 }
 
 
+#contact-me{
+    margin-top: 5vh;
+}
+
 
 #blurb{
-    width: 28vw;
+    width: 30vw;
     min-height: 30vh;
-    text-align: start;
+    text-align: center;
     color: white;
     font-size: x-large;
     margin: 0vh auto;
@@ -37,30 +41,37 @@
     margin-bottom: 5vh;
 }
 
-#email{
-    font-family: "Roboto", Arial, sans-serif;
-    color: #1c2a43;
+.dark-text{
+    margin-top: 1vh;
+    margin-bottom: 2vh;
 }
 
-#education p{
-    color: #05182a;
+.dark-text p{
     font-family: "Roboto", Arial, sans-serif;
-    font-size: larger;
+    color: #1c2a43;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 2.2vh;
+    font-weight: 600;
 }
 
 p{
-    font-family: Arial, sans-serif;
+    font-family: "Roboto", sans-serif;
     color: #FFECDB;
 }
 
 h1{
     font-family: "Righteous", sans-serif;
     color: #FFECDB;
+    text-shadow: 2px 2px #111111;
+    text-align: center;
+    margin: 0 auto;
 }
+
 
 li{
     display: flex;
-    font-family: "Arial", sans-serif;
+    font-family: "Roboto", sans-serif;
     font-size: x-large;
     color: #05182a;
     align-items: center;

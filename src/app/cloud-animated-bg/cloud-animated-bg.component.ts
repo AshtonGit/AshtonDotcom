@@ -21,7 +21,7 @@ export class CloudAnimatedBgComponent implements OnInit {
 
   private maxTimeBetweenSpawns: number = 7000; // 6 seconds 
   private minTimeBetweenSpawns: number = 3000; //2seconds
-  private refreshRateMs: number = 83; // 12fsp @ 83ms
+  private refreshRateMs: number = 83; // 12fps @ 83ms
 
 
 
@@ -32,6 +32,8 @@ export class CloudAnimatedBgComponent implements OnInit {
    * Rows do not overlap. Each rows originY coordinate is their key. 
    *  */ 
   private canvasRows: Map<number, Cloud[][]>;
+
+  private cloudSizes = [18, 12, 8];
   /*
     Time since last cloud was spawned for each canvas row.
     Each rows originY coordinate is the key.
@@ -138,7 +140,6 @@ export class CloudAnimatedBgComponent implements OnInit {
    * consecutively. 
    */
   spawnNewCloudsRandomly(): void{
-    console.log("Spawning clouds");
     for(let rowOrigin of this.canvasRows.keys()){
       const row = this.canvasRows.get(rowOrigin);
       let numClouds = 0;
@@ -173,7 +174,7 @@ export class CloudAnimatedBgComponent implements OnInit {
         const size = this.getCloudSize();
         const tier = row[size[2]];
         const species = this.getCloudSpecies(tier);
-        const position = this.getCloudSpawnPosition(rowKey, row);
+        const position = this.getCloudSpawnPosition(rowKey, row, size[0]);
         const velocity = Math.floor(position[0] < 0 ? size[1] : -size[1]);
         tier.push( new Cloud(
           position[0],
@@ -192,7 +193,7 @@ export class CloudAnimatedBgComponent implements OnInit {
     const size = this.getCloudSize();
     const tier = row[size[2]];
     const species = this.getCloudSpecies(tier);
-    const position = this.getCloudEdgeSpawnPosition(rowOrigin, tier);
+    const position = this.getCloudEdgeSpawnPosition(rowOrigin, tier, size[0]);
     //if cloud spawns on left side of screen, it moves rightwards, else it moves left.
     const velocity = Math.floor( position[0] < 0 ? size[1] : -size[1]);
     tier.push(new Cloud(
@@ -201,8 +202,7 @@ export class CloudAnimatedBgComponent implements OnInit {
       size[0],
       species,
       velocity));       
-    console.log("Spawned Cloud! type:",species.toString(),"position",position[0],position[1]);
-  }
+   }
 
   getCloudSpecies(row: Cloud[]): CloudSpecies{
     // what if array is empty? 
@@ -223,20 +223,17 @@ export class CloudAnimatedBgComponent implements OnInit {
    * @param row 
    */
   getCloudSize(): number[]{
-    const sizes = [18, 12, 8];
     const velocities = [1,2,3];
     const roll = Math.floor(Math.random() * 3);
-  if(roll === 3){
-    console.log("roll == 3");
-  }
-  return [sizes[roll], velocities[roll], roll];
+  return [this.cloudSizes[roll], velocities[roll], roll];
   }
 /*
  * 
  * @param rowOrigin: y-axis coordinate where this row begins on the canvas 
  * @param row: list of all clouds belonging to this row/subsection of the canvas
+ * @param cloudWidth: width of cloud that is to be spawned
  */
-  getCloudSpawnPosition(rowOrigin: number, row: Cloud[][]): Array<number>{
+  getCloudSpawnPosition(rowOrigin: number, row: Cloud[][], cloudWidth: number): Array<number>{
     let spawnPosition : Array<number>;
     const height = window.innerHeight;
     const width = window.innerWidth;
@@ -247,6 +244,10 @@ export class CloudAnimatedBgComponent implements OnInit {
       let randY = Math.floor((Math.random() * height) + rowOrigin);
       spawnPosition = [randX, randY];
       validPosition = true;
+      if(!this.avoidsClippingY(randY, cloudWidth)){
+        validPosition = false;
+        continue;
+      }
       for(let tier of row){
         for(let cloud of tier){
           if(!this.maintainsBufferDistance(randX, randY, buffer, cloud)){
@@ -263,7 +264,7 @@ export class CloudAnimatedBgComponent implements OnInit {
  * @param rowOrigin 
  * @param row 
  */
-  getCloudEdgeSpawnPosition(rowOrigin: number, row: Array<Cloud>): Array<number>{
+  getCloudEdgeSpawnPosition(rowOrigin: number, row: Array<Cloud>, cloudWidth: number): Array<number>{
     let spawnPosition : Array<number>;
     const height = window.innerHeight;
     const width = window.innerWidth;
@@ -279,6 +280,7 @@ export class CloudAnimatedBgComponent implements OnInit {
 
       let randY = Math.floor((Math.random() * (height - 100)) + rowOrigin);
       spawnPosition = [randX, randY];
+      if(!this.avoidsClippingY(randY, cloudWidth)) continue;
       validPosition = true;
       for(let cloud of row){
         if(!this.maintainsBufferDistance(randX, randY, buffer, cloud)){
@@ -320,6 +322,24 @@ export class CloudAnimatedBgComponent implements OnInit {
     return distance >= buffer;
   }
 
+  avoidsClippingY(yPos: number, cloudWidth: number): boolean{
+    let clipBuffer: number;
+    switch(cloudWidth){
+      case this.cloudSizes[0]:
+        clipBuffer = window.innerHeight * 0.2;
+        break;
+      case this.cloudSizes[1]:
+        clipBuffer = window.innerHeight * 0.15;
+        break;
+      case this.cloudSizes[2]:
+        clipBuffer = window.innerHeight * 0.1;
+        break;
+      default:
+        clipBuffer = window.innerHeight * 0.2;
+        break;
+    }
+    return yPos + clipBuffer < this.cloudCanvas.nativeElement.height;
+  }
 
 
   /*
